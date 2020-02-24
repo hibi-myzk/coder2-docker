@@ -1,54 +1,18 @@
-# Coder2
+# Coder2 for localhost
 
-[Coder2](https://github.com/cdr/code-server) + some little features:
+Build and start [Coder2](https://github.com/cdr/code-server) without considering security.
+If you want secure version, see [original](https://github.com/cognitom/coder2-dockera).
 
-- [fixuid](https://github.com/boxboat/fixuid)
-- Easy SSL setup, kind of
-- ~~SSH agent forwarding (only when it runs from terminal, and if the session is still alive)~~
-- Pass your SSH keys to the container
-- Pass your Git configs to the container
-
-To build and start Coder, run `bash up`. (If you have not got a SSL certificate yet, check the section below before)
+To build and start Coder, run `bash up`. 
 
 ```bash
-$ git clone https://github.com/cognitom/coder2-docker.git
+$ git clone https://github.com/hibi-myzk/coder2-docker.git
 $ cd coder2-docker
-```
-
-Set your own domain name for Coder and your password for authentification:
-
-```bash
-$ echo "export CODER_HOST='example.com'" >> ~/.bashrc
-$ echo "export CODER_PASS='your-perfect-strong-password'" >> ~/.bashrc
-$ echo "export CODER_PORT=8080" >> ~/.bashrc
-$ source ~/.bashrc
-```
-
-Then, run:
-
-```bash
 $ bash up
 ```
 
 Open http://example.com:8080 on your brwoser.
 
-## SSL Certificate
-
-Let's get your certificate from Let's Encrypt. [lego](https://github.com/go-acme/lego) is exactly the tool for that.
-
-You don't even need to install it. Just run `lego` via Docker:
-
-```bash
-$ docker run -it -v "${HOME}/.lego:/.lego" goacme/lego \
-    --email="yourname@example.com" \
-    --domains=$CODER_HOST \
-    --dns=manual \
-    run
-```
-
-I chose the manual method (`--dns=manual`) in the example command above, but there're many many options. Check it out here: https://go-acme.github.io/lego/dns/
-
-Ready? Run `bash up` again, and open https://example.com:8080 on your brwoser.
 
 ## Git user and email
 

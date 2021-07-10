@@ -1,4 +1,4 @@
-FROM codercom/code-server:v2
+FROM codercom/code-server:3.10.2
 
 RUN sudo bash -c '\
     curl -SsL https://github.com/boxboat/fixuid/releases/download/v0.4/fixuid-0.4-linux-amd64.tar.gz | tar -C /usr/local/bin -xzf - && \
